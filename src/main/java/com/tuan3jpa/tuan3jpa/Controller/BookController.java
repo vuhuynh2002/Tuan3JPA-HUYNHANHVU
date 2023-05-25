@@ -57,11 +57,11 @@ public class BookController {
     public  String deleteBook(@PathVariable("id") Long id) {
         Book book = bookService.getBookById(id);
         if (book != null) {
-            // Nếu tìm thấy Book với Id tương ứng, xoá Book này
+
             bookService.deleteBook(id);
             return  "redirect:/";
         } else {
-            // Nếu không tìm thấy Book nào với Id tương ứng, trả về HTTP Status 404 Not Found
+
             return "redirect:/";
         }
 

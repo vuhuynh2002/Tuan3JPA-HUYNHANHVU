@@ -48,11 +48,11 @@ public class CategoryController {
         Category category=categoryService.getCategoryById(id);
 
         if (category != null) {
-            // Nếu tìm thấy Book với Id tương ứng, xoá Book này
+
             categoryService.deleteCategory(id);
             return  "redirect:/";
         } else {
-            // Nếu không tìm thấy Book nào với Id tương ứng, trả về HTTP Status 404 Not Found
+
             return "redirect:/listcase";
         }
     }
