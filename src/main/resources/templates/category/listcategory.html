@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My book list</title>
+    <!--  <th:block th:replace="layout :: link-css"></th:block>-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+
+</head>
+<body>
+<th:block th:replace="layout :: header"></th:block>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+
+        </tr>
+        <tr th:each="category : ${categoryList}">
+            <td th:text="${category.id}"></td>
+            <td th:text="${category.name}"></td>
+
+            <td>
+                <a th:href="@{/edit/{id}(id=${category.id})}">Edit</a>
+                <a th:href="@{/deletecate/{id}(id=${category.id})}" onclick="return confirm('Are you sure')">Delete</a>
+            </td>
+            /edit/{id}
+
+        </tr>
+    </table>
+
+</div>
+<th:block th:replace="layout :: footer"></th:block>
+
+</body>
+</html>
