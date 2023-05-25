@@ -53,11 +53,27 @@ public class CategoryController {
             return  "redirect:/";
         } else {
             // Nếu không tìm thấy Book nào với Id tương ứng, trả về HTTP Status 404 Not Found
-            return "redirect:/";
+            return "redirect:/listcase";
         }
-
-
-
-
     }
+
+
+
+    @GetMapping("/editcate/{id}")
+    public String showEditBookForm(@PathVariable("id") Long id, Model model) {
+        Category category = categoryService.getCategoryById(id);
+
+
+        model.addAttribute("category", category);
+
+
+        return "category/editcategory";
+    }
+    @PostMapping("/editcate")
+    public String update(@ModelAttribute("category") Category category, Model model){
+        categoryService.updateCate(category);
+        return "redirect:/listcate";
+    }
+
+
 }

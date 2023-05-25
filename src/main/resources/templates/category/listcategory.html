@@ -22,7 +22,7 @@
             <td th:text="${category.name}"></td>
 
             <td>
-                <a th:href="@{/edit/{id}(id=${category.id})}">Edit</a>
+                <a th:href="@{/editcate/{id}(id=${category.id})}">Edit</a>
                 <a th:href="@{/deletecate/{id}(id=${category.id})}" onclick="return confirm('Are you sure')">Delete</a>
             </td>
             /edit/{id}

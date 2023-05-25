@@ -1,6 +1,7 @@
 package com.tuan3jpa.tuan3jpa.services;
 
 import com.tuan3jpa.tuan3jpa.Repository.ICategoryRepository;
+import com.tuan3jpa.tuan3jpa.entity.Book;
 import com.tuan3jpa.tuan3jpa.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,10 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
     public void deleteCate(Long id){categoryRepository.deleteById(id);
+
+    }
+    public void updateCate(Category category){
+        categoryRepository.save(category);
     }
 
 }
