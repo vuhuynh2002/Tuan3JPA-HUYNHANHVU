@@ -1,5 +1,6 @@
 package com.tuan3jpa.tuan3jpa.entity;
 import com.tuan3jpa.tuan3jpa.validator.annotation.ValidCategoryId;
+import com.tuan3jpa.tuan3jpa.validator.annotation.ValidUserId;
 import jakarta.persistence.*;
 
 import jakarta.validation.Valid;
@@ -15,7 +16,7 @@ import lombok.Data;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name="title")
     @NotEmpty(message = "Title must not be empty")
     @Size(max=50, min =1, message = "Title must be less than 50 characters")
@@ -30,11 +31,16 @@ public class Book {
     @ValidCategoryId
     private Category category;
 
-    public long getId() {
+    @ManyToOne
+    @JoinColumn(name = " user_id", referencedColumnName = "id")
+    @ValidUserId
+    private User user;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

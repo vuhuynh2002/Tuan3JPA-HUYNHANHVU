@@ -43,7 +43,7 @@ public class BookController {
 
     @PostMapping("/add")
     public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, Model model){
-        bookService.addBook(book);
+//        bookService.addBook(book);
         if(bindingResult.hasErrors()){
             model.addAttribute("categories",categoryService.getAllCaterories());
             return "book/add";
@@ -57,19 +57,12 @@ public class BookController {
     public  String deleteBook(@PathVariable("id") Long id) {
         Book book = bookService.getBookById(id);
         if (book != null) {
-
             bookService.deleteBook(id);
             return  "redirect:/";
         } else {
-
             return "redirect:/";
         }
-
-
-
-
     }
-
     @GetMapping("/edit/{id}")
     public String showEditBookForm(@PathVariable("id") Long id, Model model) {
         Book book = bookService.getBookById(id);
@@ -88,9 +81,9 @@ public class BookController {
 //        return "redirect:/";
 //    }
 
-    @PostMapping("edit")
-    public String update(@ModelAttribute("book") Book book, Model model){
-        bookService.updateBook(book);
-        return "redirect:/";
-    }
+        @PostMapping("edit")
+        public String update(@ModelAttribute("book") Book book, Model model){
+            bookService.updateBook(book);
+            return "redirect:/";
+        }
 }
